@@ -34,6 +34,7 @@ Yazılımın sürümünü github.com/nexus38 adresinden kontrol edebilirsiniz.
 @Version: 0.0.1
 @Author: Mustafa ÇALAP
 @Github: nexus38
+@Website: https://calap.co
 
 """
 komutlar = """\
