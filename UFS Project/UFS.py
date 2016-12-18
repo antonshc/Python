@@ -51,12 +51,13 @@ Bittorrent istemcisi -> torrent
 FTP istemcisi -> filezilla
 IRC sohbet istemcisi -> hexchat
 
+
 Bütün uygulamaları yükle -> hepsi
 Sistemi güncelle -> güncelle
-
 Ekranı temizle -> temizle
 
-Yardım -> hakkında
+
+Hakkında -> hakkında
 Programdan çık -> çık
 
 """
