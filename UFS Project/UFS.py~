@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import os
 
 ascii_art = """\
@@ -77,19 +75,11 @@ while True:
     if a == "çık":
         os.system('clear')
         b = input('Çıkmak istediğinden emin misin? (E/H)\nCevap: ')
-        if b == "E" or "e":
+        if b == "E":
             os.system('clear')
-            print("""\
-            ***
-                ***
-                    ***
-                KAPANIŞ SEKANSI BAŞLATILIYOR
-                    ***
-                ***
-            ***
-            """)
+            print('...', '...', '...', 'Program kapatılıyor', '...', '...', '...', sep='\n')
             exit()
-        elif b == "H" or "h":
+        elif b == "H":
             os.system('clear')
             print('Çıkmak istemediğine sevindim program çalışmaya devam edecek')
         else:
@@ -203,7 +193,7 @@ while True:
         except:
             os.system('clear')
             print('\nFTP istemcisi başarıyla KURULAMADI')
-    elif a == "hexchat":
+    elif a == "torrent":
         try:
             os.system('clear')
             print('\nIRC sohbet istemcisi kuruluyor\n')
