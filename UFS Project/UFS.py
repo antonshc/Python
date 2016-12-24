@@ -52,7 +52,7 @@ Spotify -> spotify
 Bittorrent istemcisi -> torrent
 FTP istemcisi -> filezilla
 IRC sohbet istemcisi -> hexchat
-
+Ağ tarayıcı -> netdiscover
 
 Bütün uygulamaları yükle -> hepsi
 Sistemi güncelle -> güncelle
@@ -72,7 +72,6 @@ b = "" #kullanıcı kontrol (E/H)
 # Değişken bloğu
 
 while True:
-
     a = input('\n     Komutları görmek için \'komutlar\' yazın\nKomut: ')
     if a == "çık":
         os.system('clear')
@@ -213,6 +212,16 @@ while True:
         except:
             os.system('clear')
             print('\nIRC sohbet istemcisi başarıyla KURULAMADI')
+    elif a == "netdiscover":
+        try:
+            os.system('clear')
+            print('\nAğ tarayıcı kuruluyor\n')
+            os.system('sudo apt-get install netdiscover --yes')
+            os.system('clear')
+            print('\nAğ tarayıcı başarıyla kuruldu\n')
+        except:
+            os.system('clear')
+            print('\nAğ tarayıcı başarıyla KURULAMADI\n')
 
     elif a == "güncelle":
         try:
@@ -337,6 +346,15 @@ while True:
         except:
             os.system('clear')
             print('\nIRC sohbet istemcisi başarıyla KURULAMADI')
+        try:
+            os.system('clear')
+            print('\nAğ tarayıcı kuruluyor\n')
+            os.system('sudo apt-get install netdiscover --yes')
+            os.system('clear')
+            print('\nAğ tarayıcı başarıyla kuruldu\n')
+        except:
+            os.system('clear')
+            print('\nAğ tarayıcı başarıyla KURULAMADI\n')
 
     elif a == "temizle":
         os.system('clear')
