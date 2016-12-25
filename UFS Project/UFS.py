@@ -47,29 +47,30 @@ hakkında()
 
 komutlar = """\
 
-Multiload Indicator -> multiload
-Sıcaklık ölçer -> sensors
-İnternet hızı ölçer -> speedtest
-Veri trafiği ölçer -> vnstat
-Veri takip edici -> traceroute
-Tor modülleri -> tor
-Proxy değiştirici -> proxychains
-Spotify -> spotify
-Bittorrent istemcisi -> torrent
-FTP istemcisi -> filezilla
-IRC sohbet istemcisi -> hexchat
-Ağ tarayıcı -> netdiscover
-
-Bütün uygulamaları yükle -> hepsi
-Sistemi güncelle -> güncelle
-Ekranı temizle -> temizle
-
-
-Hakkında -> hakkında
-Programdan çık -> çık
+Multiload Indicator -> multiload            |   Bütün uygulamaları yükle -> hepsi
+Sıcaklık ölçer -> sensors                   |   Sistemi güncelle -> güncelle
+İnternet hızı ölçer -> speedtest            |   Ekranı temizle -> temizle
+Veri trafiği ölçer -> vnstat                |
+Veri takip edici -> traceroute              |   Program hakkında -> hakkında
+Tor modülleri -> tor                        |   Programdan çık -> çık
+Proxy değiştirici -> proxychains            |
+Spotify -> spotify                          |
+Bittorrent istemcisi -> torrent             |
+FTP istemcisi -> filezilla                  |
+IRC sohbet istemcisi -> hexchat             |
+Ağ tarayıcı -> netdiscover                  |
+Medya oynatıcı -> vlc                       |
+Skype -> skype                              |
+Git istemcisi -> gitkraken                  |
 
 """
-
+def geçici_dizin_oluştur():
+    os.system('clear')
+    print('\nGeçici çalışma dizini oluşturuluyor')
+    print('Çalışma dizini değiştiriliyor-> /temp\n')
+    os.system('sudo mkdir temp')
+def geçici_dizin_sil():
+    os.system('sudo rmdir temp')
 def yükle_multiload():
     try:
         os.system('clear')
@@ -198,6 +199,44 @@ def yükle_netdiscover():
     except:
         os.system('clear')
         print('\nAğ tarayıcı başarıyla KURULAMADI\n')
+def yükle_vlc():
+    try:
+        os.system('clear')
+        print('\nVideo oynatıcı kuruluyor\n')
+        os.system('sudo apt-get install vlc --yes')
+        os.system('clear')
+        print('\nVideo oynatıcı başarıyla kuruldu\n')
+    except:
+        os.system('clear')
+        print('\nVideo oynatıcı başarıyla KURULAMADI\n')
+def yükle_skype():
+    try:
+        geçici_dizin_oluştur()
+        print('\nSkype indiriliyor\n')
+        os.system('cd temp && sudo wget https://download.skype.com/linux/skype-ubuntu-precise_4.3.0.37-1_i386.deb -O skype.deb')
+        print('\nSkype kurulumuna başlanıyor')
+        os.system('cd temp && sudo dpkg -i skype.deb')
+        print('\nSkype başarıyla kuruldu\n')
+        print('İndirilen dosyalar temizleniyor...\n')
+        os.system('cd temp && sudo rm skype.deb')
+        geçici_dizin_sil()
+    except:
+        os.system('clear')
+        print('\nSkype başarıyla KURULAMADI\n')
+def yükle_gitkraken():
+    try:
+        geçici_dizin_oluştur()
+        print('\nGitKraken indiriliyor\n')
+        os.system('cd temp && sudo wget https://release.gitkraken.com/linux/gitkraken-amd64.deb -O gitkraken.deb')
+        print('\nGitKraken kurulumuna başlanıyor')
+        os.system('cd temp && sudo dpkg -i gitkraken.deb')
+        print('\nGitKraken başarıyla kuruldu\n')
+        print('İndirilen dosyalar temizleniyor...\n')
+        os.system('cd temp && sudo rm gitkraken.deb')
+        geçici_dizin_sil()
+    except:
+        os.system('clear')
+        print('\nSkype başarıyla KURULAMADI\n')
 def sistem_güncelle():
     try:
         os.system('clear')
@@ -267,6 +306,12 @@ while True:  # sonsuz döngü
         yükle_hexchat()
     elif a == "netdiscover":
         yükle_netdiscover()
+    elif a == "vlc":
+        yükle_vlc()
+    elif a == "skype":
+        yükle_skype()
+    elif a == "gitkraken":
+        yükle_gitkraken()
     elif a == "güncelle":
         sistem_güncelle()
     elif a == "hepsi":
@@ -283,6 +328,9 @@ while True:  # sonsuz döngü
         yükle_torrent()
         yükle_traceroute()
         yükle_vnstat()
+        yükle_vlc()
+        yükle_skype()
+        yükle_gitkraken()
     elif a == "temizle":
         os.system('clear')
     elif a == "hakkında":
