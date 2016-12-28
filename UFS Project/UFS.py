@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-
+import urllib.request
+import time
 import os
 
 ascii_art = """\
@@ -43,7 +44,70 @@ def hakkında():
     os.system('clear')
     print(ascii_art)
     print(açılış_konuşmam)
-hakkında()
+
+# KONTROL BLOK BAŞLANGICI
+def açılış_kontrol():
+    os.system('clear')
+    print('\nSistem kontrol ediliyor')
+    time.sleep(1)
+    print('\nİnternet bağlantısı kontrol ediliyor')
+    internet_kontrol(durum_bağlı="Sistemin internete bağlı durumda",
+                     durum_kopuk="Sistemin internet bağlantısı bulunamadı\nTekrar deneniyor",
+                     sonsuz_döngü="Hayır")
+    print('\nProgram açılışına devam ediliyor')
+    time.sleep(3)
+    os.system('clear')
+    print('''\
+
+        Tüm kontroller yapıldı program açılıyor
+    Açılıyor: 3
+    ''')
+    time.sleep(1)
+    os.system('clear')
+    print('''\
+
+        Tüm kontroller yapıldı program açılıyor
+    Açılıyor: 2
+    ''')
+    time.sleep(1)
+    os.system('clear')
+    print('''\
+
+        Tüm kontroller yapıldı program açılıyor
+    Açılıyor: 1
+    ''')
+    time.sleep(1)
+    os.system('clear')
+    hakkında()
+def internet_kontrol(
+        durum_bağlı,
+        durum_kopuk,
+        sonsuz_döngü):
+    while True: # İnternet kontrol döngüsü
+        try:
+            time.sleep(2)
+            site = urllib.request.urlopen('https://calap.co')
+            print('\n'+durum_bağlı)
+            break
+        except urllib.error.URLError:
+            if sonsuz_döngü == "Hayır":
+                for tur in (1, 2, 3):
+                    print('\n' + durum_kopuk)
+                    time.sleep(1.5)
+                # İnternetsiz Şekilde çalışmasi için bu aralıktaki kod bloğunu kaldırın
+                print('''\
+                    Program internetsizlik sebebiyle öldü
+                    Sistem internete bağlanınca tekrar deneyin
+                ''')
+                exit()
+                # İnternetsiz Şekilde çalışmasi için bu aralıktaki kod bloğunu kaldırın
+                break
+            else:
+                print('\n' + durum_kopuk)
+                time.sleep(1.5) # # # #  adaw #
+# KONTROL BLOK SONU
+
+açılış_kontrol()
 
 komutlar = """\
 
@@ -53,7 +117,7 @@ Sıcaklık ölçer -> sensors                   |   Sistemi güncelle -> güncel
 Veri trafiği ölçer -> vnstat                |
 Veri takip edici -> traceroute              |   Program hakkında -> hakkında
 Tor modülleri -> tor                        |   Programdan çık -> çık
-Proxy değiştirici -> proxychains            |
+Proxy değiştirici -> proxychains            |   Programı kapatıp yeniden aç -> yenile
 Spotify -> spotify                          |
 Bittorrent istemcisi -> torrent             |
 FTP istemcisi -> filezilla                  |
@@ -63,7 +127,7 @@ Medya oynatıcı -> vlc                       |
 Skype -> skype                              |
 Git istemcisi -> gitkraken                  |
 
-"""
+""" # Buraya yeni özellikleri eklemeyi unutma, eklemezsen ekranda görünmez
 def geçici_dizin_oluştur():
     os.system('clear')
     print('\nGeçici çalışma dizini oluşturuluyor')
@@ -251,6 +315,12 @@ def sistem_güncelle():
     except:
         os.system('clear')
         print('\nGüncelleme işlemleri başarıyla TAMAMLANAMADI')
+def platform_kapat_aç():
+    os.system('clear')
+    print('\nUFS Platformu kapatılıyor')
+    time.sleep(3)
+    os.system('python3 UFS_yenile.py')
+    exit() #
 
 while True:  # sonsuz döngü
     a = ""  # girilen komut
@@ -335,6 +405,8 @@ while True:  # sonsuz döngü
         os.system('clear')
     elif a == "hakkında":
         hakkında()
+    elif a == "yenile":
+        platform_kapat_aç()
     else:
         os.system('clear')
         print('\nDostum çok yanlış şeyler girdin anlamadım')
