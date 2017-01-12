@@ -3,6 +3,136 @@ import urllib.request
 import time
 import os
 
+# ANA FONKSİYON
+# Yeni özellikleri buraya ekle
+def ana_döngü():
+    try:
+        while True:  # sonsuz döngü
+            a = ""  # girilen komut
+            b = ""  # kullanıcı kontrol (E/H)
+            a = input('\n     Komutları görmek için \'komutlar\' yazın\nKomut: ')
+
+            def programdan_çık():
+                os.system('clear')
+                b = input('Çıkmak istediğinden emin misin? (E/H)\nCevap: ')
+                if b == "E" or b == "e":
+                    os.system('clear')
+                    print("""\
+                    ***
+                        ***
+                            ***
+                                KAPANIŞ SEKANSI BAŞLATILIYOR
+                            ***
+                        ***
+                    ***
+                                TEKRAR GÖRÜŞMEK ÜZERE DOSTUM""")
+                    exit()
+                elif b == "H" or b == "h":
+                    os.system('clear')
+                    print('Çıkmak istemediğine sevindim program çalışmaya devam edecek')
+                else:
+                    print('Geçersiz işlem:', b, 'program çalışacak')
+
+            if a == "çık":
+                programdan_çık()
+            elif a == "komutlar":
+                os.system('clear')
+                print(komutlar)
+            elif a == "multiload":
+                yükle_multiload()
+            elif a == "sensors":
+                yükle_sensors()
+            elif a == "speedtest":
+                yükle_speedtest()
+            elif a == "vnstat":
+                yükle_vnstat()
+            elif a == "traceroute":
+                yükle_traceroute()
+            elif a == "tor":
+                yükle_tor()
+            elif a == "proxychains":
+                yükle_proxychains()
+            elif a == "spotify":
+                yükle_spotify()
+            elif a == "torrent":
+                yükle_torrent()
+            elif a == "filezilla":
+                yükle_filezilla()
+            elif a == "hexchat":
+                yükle_hexchat()
+            elif a == "netdiscover":
+                yükle_netdiscover()
+            elif a == "vlc":
+                yükle_vlc()
+            elif a == "skype":
+                yükle_skype()
+            elif a == "gitkraken":
+                yükle_gitkraken()
+            elif a == "güncelle":
+                sistem_güncelle()
+            elif a == "hepsi":
+                sistem_güncelle()
+                yükle_filezilla()
+                yükle_hexchat()
+                yükle_multiload()
+                yükle_netdiscover()
+                yükle_proxychains()
+                yükle_sensors()
+                yükle_speedtest()
+                yükle_spotify()
+                yükle_tor()
+                yükle_torrent()
+                yükle_traceroute()
+                yükle_vnstat()
+                yükle_vlc()
+                yükle_skype()
+                yükle_gitkraken()
+            elif a == "temizle":
+                os.system('clear')
+            elif a == "hakkında":
+                hakkında()
+            elif a == "yenile":
+                platform_kapat_aç()
+            else:
+                os.system('clear')
+                print('\nDostum çok yanlış şeyler girdin anlamadım')
+                print('Böyle acayip komutlarım yok ->', a)
+    except KeyboardInterrupt:
+        kontrol_c(nerede="ortasında")
+
+# KLAVYEDEN ÇIKIŞ KONTROLÜ
+def kontrol_c(nerede):
+    if nerede=="açılışta":
+        os.system('clear')
+        b = input('Sanırım çıkacak gibisin doğru mu? (E/H)')
+        if b == "E" or b == "e":
+            os.system('clear')
+            time.sleep(1.5)
+            exit()
+        elif b == "H" or b == "h":
+            açılış_kontrol()
+        else:
+            os.system('clear')
+            print('Dostum çok enteresan işler yapıyosun')
+            print('Karşı önlem olarak programı baştan açıyorum')
+            time.sleep(1.5)
+            açılış_kontrol()
+    elif nerede=="ortasında":
+        os.system('clear')
+        b = input('Sanırım çıkacak gibisin doğru mu? (E/H)')
+        if b == "E" or b == "e":
+            os.system('clear')
+            time.sleep(1.5)
+            exit()
+        elif b == "H" or b == "h":
+            ana_döngü()
+        else:
+            os.system('clear')
+            print('Dostum çok enteresan işler yapıyosun')
+            print('Karşı önlem olarak programı baştan açıyorum')
+            time.sleep(1.5)
+            açılış_kontrol()
+
 ascii_art = """\
               _________
             / MUSTAFA /|
@@ -47,42 +177,47 @@ def hakkında():
 
 # KONTROL BLOK BAŞLANGICI
 def açılış_kontrol():
-    os.system('clear')
-    print('\nSistem kontrol ediliyor')
-    time.sleep(1)
-    print('\nİnternet bağlantısı kontrol ediliyor')
-    internet_kontrol(durum_bağlı="Sistemin internete bağlı durumda",
-                     durum_kopuk="Sistemin internet bağlantısı bulunamadı\nTekrar deneniyor",
-                     sonsuz_döngü="Hayır")
-    print('\nProgram açılışına devam ediliyor')
-    time.sleep(3)
-    os.system('clear')
-    print('''\
+    try:
+        os.system('clear')
+        print('\nSistem kontrol ediliyor')
+        time.sleep(1)
+        print('\nİnternet bağlantısı kontrol ediliyor')
+        internet_kontrol(durum_bağlı="Sistemin internete bağlı durumda",
+                         durum_kopuk="Sistemin internet bağlantısı bulunamadı\nTekrar deneniyor",
+                         sonsuz_döngü="Hayır")
+        print('\nProgram açılışına devam ediliyor')
+        time.sleep(3)
+        os.system('clear')
+        print('''\
 
-        Tüm kontroller yapıldı program açılıyor
-    Açılıyor: 3
-    ''')
-    time.sleep(1)
-    os.system('clear')
-    print('''\
+            Tüm kontroller yapıldı program açılıyor
+        Açılıyor: 3
+        ''')
+        time.sleep(1)
+        os.system('clear')
+        print('''\
 
-        Tüm kontroller yapıldı program açılıyor
-    Açılıyor: 2
-    ''')
-    time.sleep(1)
-    os.system('clear')
-    print('''\
+            Tüm kontroller yapıldı program açılıyor
+        Açılıyor: 2
+        ''')
+        time.sleep(1)
+        os.system('clear')
+        print('''\
 
-        Tüm kontroller yapıldı program açılıyor
-    Açılıyor: 1
-    ''')
-    time.sleep(1)
-    os.system('clear')
-    hakkında()
+            Tüm kontroller yapıldı program açılıyor
+        Açılıyor: 1
+        ''')
+        time.sleep(1)
+        os.system('clear')
+        hakkında()
+    except KeyboardInterrupt:
+        kontrol_c(nerede="açılışta")
 def internet_kontrol(
         durum_bağlı,
         durum_kopuk,
         sonsuz_döngü):
+    # İnternet kontrolünde bug var
+    # İnternet olduğu halde bağlı değil uyarısı veriyor
     while True: # İnternet kontrol döngüsü
         try:
             time.sleep(2)
@@ -93,18 +228,20 @@ def internet_kontrol(
             if sonsuz_döngü == "Hayır":
                 for tur in (1, 2, 3):
                     print('\n' + durum_kopuk)
-                    time.sleep(1.5)
+                    time.sleep(1)
                 # İnternetsiz Şekilde çalışmasi için bu aralıktaki kod bloğunu kaldırın
                 print('''\
                     Program internetsizlik sebebiyle öldü
                     Sistem internete bağlanınca tekrar deneyin
                 ''')
-                exit()
+                # exit()
                 # İnternetsiz Şekilde çalışmasi için bu aralıktaki kod bloğunu kaldırın
                 break
             else:
                 print('\n' + durum_kopuk)
-                time.sleep(1.5) # # # #  adaw #
+                time.sleep(1.5)
+        except KeyboardInterrupt:
+            kontrol_c(nerede="açılışta")
 # KONTROL BLOK SONU
 
 açılış_kontrol()
@@ -322,92 +459,4 @@ def platform_kapat_aç():
     os.system('python3 UFS_yenile.py')
     exit() #
 
-while True:  # sonsuz döngü
-    a = ""  # girilen komut
-    b = ""  # kullanıcı kontrol (E/H)
-    a = input('\n     Komutları görmek için \'komutlar\' yazın\nKomut: ')
-    def programdan_çık():
-        os.system('clear')
-        b = input('Çıkmak istediğinden emin misin? (E/H)\nCevap: ')
-        if b == "E" or b == "e":
-            os.system('clear')
-            print("""\
-            ***
-                ***
-                    ***
-                        KAPANIŞ SEKANSI BAŞLATILIYOR
-                    ***
-                ***
-            ***
-                        TEKRAR GÖRÜŞMEK ÜZERE DOSTUM""")
-            exit()
-        elif b == "H" or b == "h":
-            os.system('clear')
-            print('Çıkmak istemediğine sevindim program çalışmaya devam edecek')
-        else:
-            print('Geçersiz işlem:', b, 'program çalışacak')
-
-    if a == "çık":
-        programdan_çık()
-    elif a == "komutlar":
-        os.system('clear')
-        print(komutlar)
-    elif a == "multiload":
-        yükle_multiload()
-    elif a == "sensors":
-        yükle_sensors()
-    elif a == "speedtest":
-        yükle_speedtest()
-    elif a == "vnstat":
-        yükle_vnstat()
-    elif a == "traceroute":
-        yükle_traceroute()
-    elif a == "tor":
-        yükle_tor()
-    elif a == "proxychains":
-        yükle_proxychains()
-    elif a == "spotify":
-        yükle_spotify()
-    elif a == "torrent":
-        yükle_torrent()
-    elif a == "filezilla":
-        yükle_filezilla()
-    elif a == "hexchat":
-        yükle_hexchat()
-    elif a == "netdiscover":
-        yükle_netdiscover()
-    elif a == "vlc":
-        yükle_vlc()
-    elif a == "skype":
-        yükle_skype()
-    elif a == "gitkraken":
-        yükle_gitkraken()
-    elif a == "güncelle":
-        sistem_güncelle()
-    elif a == "hepsi":
-        sistem_güncelle()
-        yükle_filezilla()
-        yükle_hexchat()
-        yükle_multiload()
-        yükle_netdiscover()
-        yükle_proxychains()
-        yükle_sensors()
-        yükle_speedtest()
-        yükle_spotify()
-        yükle_tor()
-        yükle_torrent()
-        yükle_traceroute()
-        yükle_vnstat()
-        yükle_vlc()
-        yükle_skype()
-        yükle_gitkraken()
-    elif a == "temizle":
-        os.system('clear')
-    elif a == "hakkında":
-        hakkında()
-    elif a == "yenile":
-        platform_kapat_aç()
-    else:
-        os.system('clear')
-        print('\nDostum çok yanlış şeyler girdin anlamadım')
-        print('Böyle acayip komutlarım yok ->', a)
+ana_döngü()
