@@ -68,6 +68,8 @@ def ana_döngü():
                 yükle_skype()
             elif a == "gitkraken":
                 yükle_gitkraken()
+            elif a == "mega":
+                yükle_megasync()
             elif a == "güncelle":
                 sistem_güncelle()
             elif a == "hepsi":
@@ -102,36 +104,46 @@ def ana_döngü():
 
 # KLAVYEDEN ÇIKIŞ KONTROLÜ
 def kontrol_c(nerede):
-    if nerede=="açılışta":
+    try:
+        if nerede == "açılışta":
+            os.system('clear')
+            b = input('Sanırım çıkacak gibisin doğru mu? (E/H)')
+            if b == "E" or b == "e":
+                os.system('clear')
+                time.sleep(1.5)
+                exit()
+            elif b == "H" or b == "h":
+                açılış_kontrol()
+            else:
+                os.system('clear')
+                print('Dostum çok enteresan işler yapıyosun')
+                print('Karşı önlem olarak programı baştan açıyorum')
+                time.sleep(1.5)
+                açılış_kontrol()
+        elif nerede == "ortasında":
+            os.system('clear')
+            b = input('Sanırım çıkacak gibisin doğru mu? (E/H)')
+            if b == "E" or b == "e":
+                os.system('clear')
+                time.sleep(1.5)
+                exit()
+            elif b == "H" or b == "h":
+                ana_döngü()
+            else:
+                os.system('clear')
+                print('Dostum çok enteresan işler yapıyosun')
+                print('Karşı önlem olarak programı baştan açıyorum')
+                time.sleep(1.5)
+                açılış_kontrol()
+    except KeyboardInterrupt:
         os.system('clear')
-        b = input('Sanırım çıkacak gibisin doğru mu? (E/H)')
-        if b == "E" or b == "e":
-            os.system('clear')
-            time.sleep(1.5)
-            exit()
-        elif b == "H" or b == "h":
-            açılış_kontrol()
-        else:
-            os.system('clear')
-            print('Dostum çok enteresan işler yapıyosun')
-            print('Karşı önlem olarak programı baştan açıyorum')
-            time.sleep(1.5)
-            açılış_kontrol()
-    elif nerede=="ortasında":
+        print('E sende yeter ama artık çıkacaksan çık tamam')
+        exit()
+    except:
         os.system('clear')
-        b = input('Sanırım çıkacak gibisin doğru mu? (E/H)')
-        if b == "E" or b == "e":
-            os.system('clear')
-            time.sleep(1.5)
-            exit()
-        elif b == "H" or b == "h":
-            ana_döngü()
-        else:
-            os.system('clear')
-            print('Dostum çok enteresan işler yapıyosun')
-            print('Karşı önlem olarak programı baştan açıyorum')
-            time.sleep(1.5)
-            açılış_kontrol()
+        print('Bişeyler çok ters gitti ama anlamadım\nPlatformu baştan açıyorum')
+        time.sleep(2)
+        açılış_kontrol()
 
 ascii_art = """\
               _________
@@ -164,7 +176,7 @@ Yazılımın sürümünü github.com/nexus38 adresinden kontrol edebilirsiniz.
 
 --- BAZI İŞLEMLER İÇİN YÖNETİCİ YETKİSİ GEREKEBİLİR ---
 
-@Version: 0.0.1
+@Version: 0.1.1
 @Author: Mustafa ÇALAP
 @Github: nexus38
 @Website: https://calap.co
@@ -256,7 +268,7 @@ Veri takip edici -> traceroute              |   Program hakkında -> hakkında
 Tor modülleri -> tor                        |   Programdan çık -> çık
 Proxy değiştirici -> proxychains            |   Programı kapatıp yeniden aç -> yenile
 Spotify -> spotify                          |
-Bittorrent istemcisi -> torrent             |
+Bittorrent istemcisi -> torrent             |   MegaSync -> mega
 FTP istemcisi -> filezilla                  |
 IRC sohbet istemcisi -> hexchat             |
 Ağ tarayıcı -> netdiscover                  |
@@ -438,6 +450,21 @@ def yükle_gitkraken():
     except:
         os.system('clear')
         print('\nSkype başarıyla KURULAMADI\n')
+def yükle_megasync():
+    try:
+        geçici_dizin_oluştur()
+        print('\nMegaSync indiriliyor\n')
+        os.system('cd temp && sudo wget https://mega.nz/linux/MEGAsync/xUbuntu_16.04/amd64/megasync-xUbuntu_16.04_amd64.deb -O mega.deb')
+        print('\nMegaSync kurulumuna başlanıyor')
+        os.system('cd temp && sudo dpkg -i mega.deb')
+        print('\nMegaSync başarıyla kuruldu\n')
+        print('İndirilen dosyalar temizleniyor...\n')
+        os.system('cd temp && sudo rm mega.deb')
+        geçici_dizin_sil()
+    except:
+        os.system('clear')
+        print('\nMegaSync başarıyla KURULAMADI\n')
+
 def sistem_güncelle():
     try:
         os.system('clear')
