@@ -70,6 +70,10 @@ def ana_döngü():
                 yükle_gitkraken()
             elif a == "mega":
                 yükle_megasync()
+            elif a == "youtube":
+                yükle_youtube_dl()
+            elif a == "atom":
+                yükle_atom_editör()
             elif a == "güncelle":
                 sistem_güncelle()
             elif a == "hepsi":
@@ -243,7 +247,7 @@ def internet_kontrol(
                     time.sleep(1)
                 # İnternetsiz Şekilde çalışmasi için bu aralıktaki kod bloğunu kaldırın
                 print('''\
-                    Program internetsizlik sebebiyle öldü
+                    Program internetsizlik sebebiyle çökebilir
                     Sistem internete bağlanınca tekrar deneyin
                 ''')
                 # exit()
@@ -256,7 +260,7 @@ def internet_kontrol(
             kontrol_c(nerede="açılışta")
 # KONTROL BLOK SONU
 
-açılış_kontrol()
+açılış_kontrol()  # Programı başlatan komut
 
 komutlar = """\
 
@@ -269,20 +273,21 @@ Tor modülleri -> tor                        |   Programdan çık -> çık
 Proxy değiştirici -> proxychains            |   Programı kapatıp yeniden aç -> yenile
 Spotify -> spotify                          |
 Bittorrent istemcisi -> torrent             |   MegaSync -> mega
-FTP istemcisi -> filezilla                  |
-IRC sohbet istemcisi -> hexchat             |
+FTP istemcisi -> filezilla                  |   Youtube İndirici -> youtube
+IRC sohbet istemcisi -> hexchat             |   Atom Editör -> atom
 Ağ tarayıcı -> netdiscover                  |
 Medya oynatıcı -> vlc                       |
 Skype -> skype                              |
 Git istemcisi -> gitkraken                  |
 
-""" # Buraya yeni özellikleri eklemeyi unutma, eklemezsen ekranda görünmez
+"""  # Buraya yeni özellikleri eklemeyi unutma, eklemezsen ekranda görünmez
 def geçici_dizin_oluştur():
     os.system('clear')
     print('\nGeçici çalışma dizini oluşturuluyor')
     print('Çalışma dizini değiştiriliyor-> /temp\n')
     os.system('sudo mkdir temp')
 def geçici_dizin_sil():
+    os.system('cd temp && sudo rm * && cd ..')
     os.system('sudo rmdir temp')
 def yükle_multiload():
     try:
@@ -449,7 +454,7 @@ def yükle_gitkraken():
         geçici_dizin_sil()
     except:
         os.system('clear')
-        print('\nSkype başarıyla KURULAMADI\n')
+        print('\nGitKraken başarıyla KURULAMADI\n')
 def yükle_megasync():
     try:
         geçici_dizin_oluştur()
@@ -464,6 +469,30 @@ def yükle_megasync():
     except:
         os.system('clear')
         print('\nMegaSync başarıyla KURULAMADI\n')
+def yükle_youtube_dl():
+    try:
+        os.system('clear')
+        print('\nYoutube video indirici kuruluyor\n')
+        os.system('sudo apt-get install youtube-dl --yes')
+        os.system('clear')
+        print('\nYoutube video indirici kuruldu\n')
+    except:
+        os.system('clear')
+        print('\nYoutube video indirici başarıyla KURULAMADI\n')
+def yükle_atom_editör():
+    try:
+        geçici_dizin_oluştur()
+        print('\nAtom Editör indiriliyor\n')
+        os.system('cd temp && sudo wget https://atom-installer.github.com/v1.13.0/atom-amd64.deb -O atom.deb')
+        print('\nAtom Editör kurulumuna başlanıyor')
+        os.system('cd temp && sudo dpkg -i atom.deb')
+        print('\nAtom Editör başarıyla kuruldu\n')
+        print('İndirilen dosyalar temizleniyor...\n')
+        os.system('cd temp && sudo rm atom.deb')
+        geçici_dizin_sil()
+    except:
+        os.system('clear')
+        print('\nAtom Editör başarıyla KURULAMADI\n')
 
 def sistem_güncelle():
     try:
