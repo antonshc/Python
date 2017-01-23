@@ -270,7 +270,7 @@ Sıcaklık ölçer -> sensors                   |   Sistemi güncelle -> güncel
 Veri trafiği ölçer -> vnstat                |
 Veri takip edici -> traceroute              |   Program hakkında -> hakkında
 Tor modülleri -> tor                        |   Programdan çık -> çık
-Proxy değiştirici -> proxychains            |   Programı kapatıp yeniden aç -> yenile
+Proxy değiştirici -> proxychains            |   Programı kapat aç -> yenile
 Spotify -> spotify                          |
 Bittorrent istemcisi -> torrent             |   MegaSync -> mega
 FTP istemcisi -> filezilla                  |   Youtube İndirici -> youtube
@@ -287,8 +287,9 @@ def geçici_dizin_oluştur():
     print('Çalışma dizini değiştiriliyor-> /temp\n')
     os.system('sudo mkdir temp')
 def geçici_dizin_sil():
-    os.system('cd temp && sudo rm * && cd ..')
-    os.system('sudo rmdir temp')
+    print('\nİndirilen dosyalar \'temp\' adlı klasörde depolanmıştır.')
+    # os.system('cd temp && sudo rm * && cd ..')
+    # os.system('sudo rmdir temp')
 def yükle_multiload():
     try:
         os.system('clear')
@@ -436,7 +437,7 @@ def yükle_skype():
         os.system('cd temp && sudo dpkg -i skype.deb')
         print('\nSkype başarıyla kuruldu\n')
         print('İndirilen dosyalar temizleniyor...\n')
-        os.system('cd temp && sudo rm skype.deb')
+        #  os.system('cd temp && sudo rm skype.deb')  //indirilen dosyaları kullanıcı kendisi siler
         geçici_dizin_sil()
     except:
         os.system('clear')
@@ -450,7 +451,7 @@ def yükle_gitkraken():
         os.system('cd temp && sudo dpkg -i gitkraken.deb')
         print('\nGitKraken başarıyla kuruldu\n')
         print('İndirilen dosyalar temizleniyor...\n')
-        os.system('cd temp && sudo rm gitkraken.deb')
+        #  os.system('cd temp && sudo rm gitkraken.deb')  /indirilenleri kullanıcı kendisi siler
         geçici_dizin_sil()
     except:
         os.system('clear')
@@ -464,7 +465,7 @@ def yükle_megasync():
         os.system('cd temp && sudo dpkg -i mega.deb')
         print('\nMegaSync başarıyla kuruldu\n')
         print('İndirilen dosyalar temizleniyor...\n')
-        os.system('cd temp && sudo rm mega.deb')
+        #  os.system('cd temp && sudo rm mega.deb')  //indirilenleri kullanıcı kendisi siler
         geçici_dizin_sil()
     except:
         os.system('clear')
@@ -488,7 +489,7 @@ def yükle_atom_editör():
         os.system('cd temp && sudo dpkg -i atom.deb')
         print('\nAtom Editör başarıyla kuruldu\n')
         print('İndirilen dosyalar temizleniyor...\n')
-        os.system('cd temp && sudo rm atom.deb')
+        #  os.system('cd temp && sudo rm atom.deb')  //indirilenleri kullanıcı kendisi siler
         geçici_dizin_sil()
     except:
         os.system('clear')
