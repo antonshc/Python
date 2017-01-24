@@ -74,6 +74,10 @@ def ana_döngü():
                 yükle_youtube_dl()
             elif a == "atom":
                 yükle_atom_editör()
+            elif a == "opera":
+                yükle_opera42_stable()
+            elif a == "steam":
+                yükle_steam()
             elif a == "güncelle":
                 sistem_güncelle()
             elif a == "hepsi":
@@ -93,6 +97,8 @@ def ana_döngü():
                 yükle_vlc()
                 yükle_skype()
                 yükle_gitkraken()
+                yükle_opera42_stable()
+                yükle_steam()
             elif a == "temizle":
                 os.system('clear')
             elif a == "hakkında":
@@ -275,8 +281,8 @@ Spotify -> spotify                          |
 Bittorrent istemcisi -> torrent             |   MegaSync -> mega
 FTP istemcisi -> filezilla                  |   Youtube İndirici -> youtube
 IRC sohbet istemcisi -> hexchat             |   Atom Editör -> atom
-Ağ tarayıcı -> netdiscover                  |
-Medya oynatıcı -> vlc                       |
+Ağ tarayıcı -> netdiscover                  |   Opera Tarayıcı v42 -> opera
+Medya oynatıcı -> vlc                       |   Steam Platformu -> steam
 Skype -> skype                              |
 Git istemcisi -> gitkraken                  |
 
@@ -494,6 +500,34 @@ def yükle_atom_editör():
     except:
         os.system('clear')
         print('\nAtom Editör başarıyla KURULAMADI\n')
+def yükle_opera42_stable():
+    try:
+        geçici_dizin_oluştur()
+        print('\nOpera Tarayıcı sürüm: 42 indiriliyor\n')
+        os.system('cd temp && sudo wget https://download1.operacdn.com/pub/opera/desktop/42.0.2393.137/linux/opera-stable_42.0.2393.137_amd64.deb -O opera_v42.deb')
+        print('\nOpera Tarayıcı sürüm: 42 kurulumuna başlanıyor')
+        os.system('cd temp && sudo dpkg -i opera_v42.deb')
+        print('\nOpera Tarayıcı sürüm: 42 başarıyla kuruldu\n')
+        print('İndirilen dosyalar temizleniyor...\n')
+        #  os.system('cd temp && sudo rm opera_v42.deb')  /indirilenleri kullanıcı kendisi siler
+        geçici_dizin_sil()
+    except:
+        os.system('clear')
+        print('\nOpera Tarayıcı sürüm: 42 başarıyla KURULAMADI\n')
+def yükle_steam():
+    try:
+        geçici_dizin_oluştur()
+        print('\nSteam indiriliyor\n')
+        os.system('cd temp && sudo wget http://repo.steampowered.com/steam/archive/precise/steam_latest.deb -O steam.deb')
+        print('\nSteam kurulumuna başlanıyor')
+        os.system('cd temp && sudo dpkg -i steam.deb')
+        print('\nSteam başarıyla kuruldu\n')
+        print('İndirilen dosyalar temizleniyor...\n')
+        #  os.system('cd temp && sudo rm steam.deb')  /indirilenleri kullanıcı kendisi siler
+        geçici_dizin_sil()
+    except:
+        os.system('clear')
+        print('\nSteam başarıyla KURULAMADI\n')
 
 def sistem_güncelle():
     try:
@@ -515,5 +549,6 @@ def platform_kapat_aç():
     time.sleep(3)
     os.system('python3 UFS_yenile.py')
     exit() #
+
 
 ana_döngü()
