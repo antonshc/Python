@@ -2,6 +2,7 @@
 import urllib.request
 import time
 import os
+MAVI, KIRMIZI, BEYAZ, SARI, MACENTA, YEŞİL, SON = '\33[94m', '\033[91m', '\33[97m', '\33[93m', '\033[1;35m', '\033[1;32m', '\033[0m'  #RENKLER
 
 # ANA FONKSİYON
 # Yeni özellikleri buraya ekle
@@ -10,7 +11,7 @@ def ana_döngü():
         while True:  # sonsuz döngü
             a = ""  # girilen komut
             b = ""  # kullanıcı kontrol (E/H)
-            a = input('\n     Komutları görmek için \'komutlar\' yazın\nKomut: ')
+            a = input('\n     {3}Komutları görmek için \'komutlar\' yazın\n{1}Komut: '.format(YEŞİL, SARI, KIRMIZI, BEYAZ, MAVI, SON))
 
             def programdan_çık():
                 os.system('clear')
@@ -33,54 +34,54 @@ def ana_döngü():
                 else:
                     print('Geçersiz işlem:', b, 'program çalışacak')
 
-            if a == "çık":
+            if a == "çık" or a == "q":
                 programdan_çık()
             elif a == "komutlar":
                 os.system('clear')
-                print(komutlar)
-            elif a == "multiload":
+                print(komutlar.format(YEŞİL, SARI, KIRMIZI, BEYAZ, SON))
+            elif a == "1":
                 yükle_multiload()
-            elif a == "sensors":
+            elif a == "2":
                 yükle_sensors()
-            elif a == "speedtest":
+            elif a == "3":
                 yükle_speedtest()
-            elif a == "vnstat":
+            elif a == "4":
                 yükle_vnstat()
-            elif a == "traceroute":
+            elif a == "5":
                 yükle_traceroute()
-            elif a == "tor":
+            elif a == "6":
                 yükle_tor()
-            elif a == "proxychains":
+            elif a == "7":
                 yükle_proxychains()
-            elif a == "spotify":
+            elif a == "8":
                 yükle_spotify()
-            elif a == "torrent":
+            elif a == "9":
                 yükle_torrent()
-            elif a == "filezilla":
+            elif a == "10":
                 yükle_filezilla()
-            elif a == "hexchat":
+            elif a == "11":
                 yükle_hexchat()
-            elif a == "netdiscover":
+            elif a == "12":
                 yükle_netdiscover()
-            elif a == "vlc":
+            elif a == "13":
                 yükle_vlc()
-            elif a == "skype":
+            elif a == "14":
                 yükle_skype()
-            elif a == "gitkraken":
+            elif a == "15":
                 yükle_gitkraken()
-            elif a == "mega":
+            elif a == "16":
                 yükle_megasync()
-            elif a == "youtube":
+            elif a == "17":
                 yükle_youtube_dl()
-            elif a == "atom":
+            elif a == "18":
                 yükle_atom_editör()
-            elif a == "opera":
+            elif a == "19":
                 yükle_opera42_stable()
-            elif a == "steam":
+            elif a == "20":
                 yükle_steam()
-            elif a == "güncelle":
+            elif a == "666":
                 sistem_güncelle()
-            elif a == "hepsi":
+            elif a == "999":
                 sistem_güncelle()
                 yükle_filezilla()
                 yükle_hexchat()
@@ -99,16 +100,16 @@ def ana_döngü():
                 yükle_gitkraken()
                 yükle_opera42_stable()
                 yükle_steam()
-            elif a == "temizle":
+            elif a == "0":
                 os.system('clear')
-            elif a == "hakkında":
+            elif a == "h":
                 hakkında()
-            elif a == "yenile":
+            elif a == "000":
                 platform_kapat_aç()
             else:
                 os.system('clear')
-                print('\nDostum çok yanlış şeyler girdin anlamadım')
-                print('Böyle acayip komutlarım yok ->', a)
+                print('\n{0}Dostum çok yanlış şeyler girdin anlamadım'.format(KIRMIZI))
+                print('{0}Böyle acayip komutlarım yok ->'.format(BEYAZ), a)
     except KeyboardInterrupt:
         kontrol_c(nerede="ortasında")
 
@@ -186,7 +187,7 @@ Yazılımın sürümünü github.com/nexus38 adresinden kontrol edebilirsiniz.
 
 --- BAZI İŞLEMLER İÇİN YÖNETİCİ YETKİSİ GEREKEBİLİR ---
 
-@Version: 0.1.1
+@Version: 0.1.4
 @Author: Mustafa ÇALAP
 @Github: nexus38
 @Website: https://calap.co
@@ -270,21 +271,20 @@ açılış_kontrol()  # Programı başlatan komut
 
 komutlar = """\
 
-Multiload Indicator -> multiload            |   Bütün uygulamaları yükle -> hepsi
-Sıcaklık ölçer -> sensors                   |   Sistemi güncelle -> güncelle
-İnternet hızı ölçer -> speedtest            |   Ekranı temizle -> temizle
-Veri trafiği ölçer -> vnstat                |
-Veri takip edici -> traceroute              |   Program hakkında -> hakkında
-Tor modülleri -> tor                        |   Programdan çık -> çık
-Proxy değiştirici -> proxychains            |   Programı kapat aç -> yenile
-Spotify -> spotify                          |
-Bittorrent istemcisi -> torrent             |   MegaSync -> mega
-FTP istemcisi -> filezilla                  |   Youtube İndirici -> youtube
-IRC sohbet istemcisi -> hexchat             |   Atom Editör -> atom
-Ağ tarayıcı -> netdiscover                  |   Opera Tarayıcı v42 -> opera
-Medya oynatıcı -> vlc                       |   Steam Platformu -> steam
-Skype -> skype                              |
-Git istemcisi -> gitkraken                  |
+{4}[{0}1{4}]  {1}Multiload indicator         {4}|   [{2}999{4}] Hepsini yükle
+{4}[{0}2{4}]  {1}Sıcaklık ölçer              {4}|   [{2}666{4}] {0}Sistemi güncelle
+{4}[{0}3{4}]  {1}İnternet hızı ölçer         {4}|   [{3}0{4}]   {1}Ekranı temizle
+{4}[{0}4{4}]  {1}Veri trafiği ölçer          {4}|
+{4}[{0}5{4}]  {1}Veri takip edici            {4}|   [{1}h{4}]   Hakkında
+{4}[{0}6{4}]  {1}Tor modülleri               {4}|   [{3}000{4}] {1}Kapat/Aç
+{4}[{0}7{4}]  {1}Proxy değiştirici           {4}|   [{2}q{4}]   ÇIK
+{4}[{0}8{4}]  {1}Spotify                     {4}|
+{4}[{0}9{4}]  {1}qBittorrent                 {4}|   [{0}15{4}]  {1}GitKraken
+{4}[{0}10{4}] {1}Filezilla                   {4}|   [{0}16{4}]  {1}MegaSync
+{4}[{0}11{4}] {1}Hexchat                     {4}|   [{0}17{4}]  {1}Youtube indirici
+{4}[{0}12{4}] {1}Netdiscover                 {4}|   [{0}18{4}]  {1}Atom editör
+{4}[{0}13{4}] {1}VLC player                  {4}|   [{0}19{4}]  {1}Opera tarayıcı v42
+{4}[{0}14{4}] {1}Skype                       {4}|   [{0}20{4}]  {1}Steam platformu
 
 """  # Buraya yeni özellikleri eklemeyi unutma, eklemezsen ekranda görünmez
 def geçici_dizin_oluştur():
