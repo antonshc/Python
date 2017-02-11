@@ -1,8 +1,9 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
 import urllib.request
 import time
 import os
-MAVI, KIRMIZI, BEYAZ, SARI, MACENTA, YEŞİL, SON = '\33[94m', '\033[91m', '\33[97m', '\33[93m', '\033[1;35m', '\033[1;32m', '\033[0m'  #RENKLER
+MAVI, KIRMIZI, BEYAZ, SARI, MACENTA, YEŞİL, SON = '\33[94m', '\033[91m', '\33[97m', '\33[93m', '\033[1;35m', '\033[1;32m', '\033[0m'  # RENKLER
 
 # ANA FONKSİYON
 # Yeni özellikleri buraya ekle
@@ -100,6 +101,9 @@ def ana_döngü():
                 yükle_gitkraken()
                 yükle_opera42_stable()
                 yükle_steam()
+                yükle_atom_editör()
+                yükle_youtube_dl()
+                yükle_megasync()
             elif a == "0":
                 os.system('clear')
             elif a == "h":
