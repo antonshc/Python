@@ -81,9 +81,16 @@ def ana_döngü():
             elif a == "20":
                 yükle_steam()
             elif a == "666":
-                sistem_güncelle()
+                os.system('clear')
+                b = input('Güncellendikten sonra sistem kapatılsın mı? (E/H)\nCevap: ')
+                if b == "E" or b == "e":
+                    sistem_güncelle(güncellendikten_sonra_sistemi_kapat='evet')
+                elif b == "H" or b == "h":
+                    sistem_güncelle(güncellendikten_sonra_sistemi_kapat='hayır')
+                else:
+                    print('Geçersiz işlem:', b, 'program çalışacak')
             elif a == "999":
-                sistem_güncelle()
+                sistem_güncelle(güncellendikten_sonra_sistemi_kapat='hayır')
                 yükle_filezilla()
                 yükle_hexchat()
                 yükle_multiload()
@@ -533,26 +540,43 @@ def yükle_steam():
         os.system('clear')
         print('\nSteam başarıyla KURULAMADI\n')
 
-def sistem_güncelle():
-    try:
-        os.system('clear')
-        print('\nSistem güncellemesi başlatılıyor\n')
-        print('Gereksiz şeyler temizleniyor\n')
-        os.system('sudo apt-get autoclean --yes')
-        os.system('sudo apt-get autoremove --yes')
-        print('\nGüncelleme modülleri başlatılıyor\n')
-        os.system('sudo apt-get upgrade --yes')
-        os.system('sudo apt-get update --yes')
-        print('\nGüncelleme işlemleri başarıyla tamamlamlandı\n')
-    except:
-        os.system('clear')
-        print('\nGüncelleme işlemleri başarıyla TAMAMLANAMADI')
+def sistem_güncelle(güncellendikten_sonra_sistemi_kapat):
+    if güncellendikten_sonra_sistemi_kapat == 'evet':
+        try:
+            os.system('clear')
+            print('\nSistem güncellemesi başlatılıyor\n')
+            print('Gereksiz şeyler temizleniyor\n')
+            os.system('sudo apt-get autoclean --yes')
+            os.system('sudo apt-get autoremove --yes')
+            print('\nGüncelleme modülleri başlatılıyor\n')
+            os.system('sudo apt-get update --yes')
+            os.system('sudo apt-get upgrade --yes')
+            print('\nGüncelleme işlemleri başarıyla tamamlamlandı\n')
+            print('GÜNCELLEME TAMAMLANDI SİSTEM KAPATILIYOR')
+            os.system('sudo shutdown -h now')
+        except:
+            os.system('clear')
+            print('\nGüncelleme işlemleri başarıyla TAMAMLANAMADI')
+    elif güncellendikten_sonra_sistemi_kapat == 'hayır':
+        try:
+            os.system('clear')
+            print('\nSistem güncellemesi başlatılıyor\n')
+            print('Gereksiz şeyler temizleniyor\n')
+            os.system('sudo apt-get autoclean --yes')
+            os.system('sudo apt-get autoremove --yes')
+            print('\nGüncelleme modülleri başlatılıyor\n')
+            os.system('sudo apt-get upgrade --yes')
+            os.system('sudo apt-get update --yes')
+            print('\nGüncelleme işlemleri başarıyla tamamlamlandı\n')
+        except:
+            os.system('clear')
+            print('\nGüncelleme işlemleri başarıyla TAMAMLANAMADI')
 def platform_kapat_aç():
     os.system('clear')
     print('\nUFS Platformu kapatılıyor')
     time.sleep(3)
     os.system('python3 UFS_yenile.py')
-    exit() #
+    exit()
 
 
 ana_döngü()
