@@ -89,6 +89,10 @@ def ana_döngü():
                     sistem_güncelle(güncellendikten_sonra_sistemi_kapat='hayır')
                 else:
                     print('Geçersiz işlem:', b, 'program çalışacak')
+            elif a == "21":
+                yükle_guvcview()
+            elif a == "22":
+                yükle_temapaketi()
             elif a == "999":
                 sistem_güncelle(güncellendikten_sonra_sistemi_kapat='hayır')
                 yükle_filezilla()
@@ -111,6 +115,8 @@ def ana_döngü():
                 yükle_atom_editör()
                 yükle_youtube_dl()
                 yükle_megasync()
+                yükle_guvcview()
+                yükle_temapaketi()
             elif a == "0":
                 os.system('clear')
             elif a == "h":
@@ -296,6 +302,8 @@ komutlar = """\
 {4}[{0}12{4}] {1}Netdiscover                 {4}|   [{0}18{4}]  {1}Atom editör
 {4}[{0}13{4}] {1}VLC player                  {4}|   [{0}19{4}]  {1}Opera tarayıcı v42
 {4}[{0}14{4}] {1}Skype                       {4}|   [{0}20{4}]  {1}Steam platformu
+{4}-----------------------------------------------------------------------------------{4}
+{4}[{0}21{4}] {1}Guvcview                    {4}|   [{0}22{4}]  {1}Tema Paketi
 
 """  # Buraya yeni özellikleri eklemeyi unutma, eklemezsen ekranda görünmez
 def geçici_dizin_oluştur():
@@ -539,6 +547,39 @@ def yükle_steam():
     except:
         os.system('clear')
         print('\nSteam başarıyla KURULAMADI\n')
+def yükle_guvcview():
+    try:
+        os.system('clear')
+        print('\nKamera uygulaması kuruluyor\n')
+        os.system('sudo apt-get install guvcview --yes')
+        os.system('clear')
+        print('\nKamera uygulaması başarıyla kuruldu\n')
+    except:
+        os.system('clear')
+        print('\nKamera uygulaması başarıyla KURULAMADI')
+def yükle_temapaketi():
+    try:
+        os.system('clear')
+        print('\nGerekli ayarlamalar yapılıyor...')
+        time.sleep(1.3)
+        os.system('sudo apt-get install unity-tweak-tool --yes')
+        os.system('sudo add-apt-repository ppa:noobslab/themes --yes')
+        os.system('sudo add-apt-repository ppa:noobslab/macbuntu --yes')
+        print('\nRepo kaynağı güncelleniyor...')
+        time.sleep(1.3)
+        os.system('sudo apt-get update --yes')
+        print('\nTemalar yükleniyor...')
+        time.sleep(1.3)
+        os.system('sudo apt-get install arc-theme --yes')
+        os.system('sudo apt-get install macbuntu-os-icons-lts-v8 --yes')
+        os.system('sudo apt-get install macbuntu-os-ithemes-lts-v8 --yes')
+        print('\nTemalar başarıyla kuruldu')
+        time.sleep(2)
+        print('{3}Temaları aktifleştirmek için {4}Unity Tweak Tool {3}aracını kullanın')
+        time.sleep(5)
+    except:
+        os.system('clear')
+        print('\nTema paketi başarıyla KURULAMADI')
 
 def sistem_güncelle(güncellendikten_sonra_sistemi_kapat):
     if güncellendikten_sonra_sistemi_kapat == 'evet':
