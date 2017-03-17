@@ -3,6 +3,8 @@
 import urllib.request
 import time
 import os
+import requests as req
+import netifaces as ni
 MAVI, KIRMIZI, BEYAZ, SARI, MACENTA, YEŞİL, SON = '\33[94m', '\033[91m', '\33[97m', '\33[93m', '\033[1;35m', '\033[1;32m', '\033[0m'  # RENKLER
 
 # ANA FONKSİYON
@@ -262,7 +264,11 @@ def internet_kontrol(
         try:
             time.sleep(2)
             site = urllib.request.urlopen('https://calap.co')
+            r = req.get('https://ipinfo.io')
+            ip1 = 'İnternet IP: ' + (r.json()['ip'])
+            ip2 = 'Yerel IP: ' + ni.ifaddresses('wlp3s0')[2][0]['addr']
             print('\n'+durum_bağlı)
+            print(ip1+'\n'+ip2)
             break
         except urllib.error.URLError:
             if sonsuz_döngü == "Hayır":
