@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
 import turtle
 kenar_uzunlugu = 0
 kenar_sayisi = 0
