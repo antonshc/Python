@@ -280,7 +280,7 @@ def internet_kontrol(
                     Program internetsizlik sebebiyle çökebilir
                     Sistem internete bağlanınca tekrar deneyin
                 ''')
-                # exit()
+                exit()
                 # İnternetsiz Şekilde çalışmasi için bu aralıktaki kod bloğunu kaldırın
                 break
             else:
