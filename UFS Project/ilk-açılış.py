@@ -3,7 +3,7 @@
 
 import os
 
-def gerekli_kütüphaneler():
+def gerekli_kütüphaneler():  # bunlar olmadan program düzgün çalışmayabilir
     os.system('sudo apt-get install python3-pip --yes')
     os.system('sudo pip install requests')
     os.system('sudo pip install netinterfaces')
