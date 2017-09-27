@@ -23,7 +23,7 @@ try:                                             # aşağıdaki kodları çalı�
     for i in range(kenar_sayisi):                # girilen kenar sayısı kadar döngü oluşturur
         tu.forward(kenar_uzunlugu)               # girilen kenar uzunluğu kadar kaplumbağayı ilerletir
         tu.left(360 / kenar_sayisi)              # kaplumbağayı şeklin dış açısına göre döndürür
-    print("\nKenar uzunluğu", str(kenar_uzunlugu), "birim olan", str(kenar_sayisi), "kenarlı bir şekil oluşturuldu.")
+    print("\nKenar uzunluğu", str(kenar_uzunlugu), "birim olan", str(kenar_sayisi), "kenarlı bir çokgen oluşturuldu.")
 except:                                          # yukarıdaki kodlar hata verirse aşağıdakileri çalıştırır
     print("Program kapandı.")
     exit()
