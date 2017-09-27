@@ -2,10 +2,9 @@
 # -*- coding: utf-8 -*-
 import os
 import time
-# UFS Platform yeniden başlatma aracı
+# UFS yeniden başlatma aracı
 def UFS_yeniden_başlat():
     os.system('clear')
-    # os.system('killall python3 UFS.py')
     print('\nUFS platformu yeniden başlatılıyor')
     time.sleep(3)
     print('\n\nSİSTEM YENİDEN BAŞLATMA\n\n')
