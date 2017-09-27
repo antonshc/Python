@@ -259,7 +259,7 @@ def internet_kontrol(
         durum_kopuk,
         sonsuz_döngü):
     # İnternet kontrolünde bug var
-    # İnternet olduğu halde bağlı değil uyarısı veriyor
+    # İnternet olduğu halde bağlı değil uyarısı verebiliyor
     while True: # İnternet kontrol döngüsü
         try:
             time.sleep(2)
