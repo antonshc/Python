@@ -4,7 +4,7 @@ import turtle
 
 wn = turtle.Screen()
 wn.bgcolor("blue")
-wn.title("Muz Cumhuriyeti") # in Turkish that means Republic of Banana
+wn.title("Muz Cumhuriyeti")  # in Turkish that means Republic of Banana
 jose = turtle.Turtle()
 jose.shape("turtle")
 jose.color("red")
