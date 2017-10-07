@@ -1,4 +1,4 @@
-# !/usr/bin/python
+# #!/usr/bin/python3
 @Author: **Mustafa ÇALAP**
 
 @Website: https://calap.co
