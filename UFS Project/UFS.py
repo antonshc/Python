@@ -95,6 +95,8 @@ def ana_döngü():
                 yükle_guvcview()
             elif a == "22":
                 yükle_temapaketi()
+            elif a == "23":
+                yükle_trimage()
             elif a == "999":
                 sistem_güncelle(güncellendikten_sonra_sistemi_kapat='hayır')
                 yükle_filezilla()
@@ -119,6 +121,7 @@ def ana_döngü():
                 yükle_megasync()
                 yükle_guvcview()
                 yükle_temapaketi()
+                yükle_trimage()
             elif a == "0":
                 os.system('clear')
             elif a == "h":
@@ -310,6 +313,7 @@ komutlar = """\
 {4}[{0}14{4}] {1}Skype                       {4}|   [{0}20{4}]  {1}Steam platformu
 {4}-----------------------------------------------------------------------------------{4}
 {4}[{0}21{4}] {1}Guvcview                    {4}|   [{0}22{4}]  {1}Tema Paketi
+{4}[{0}23{4}] {1}Trimage
 
 """  # Buraya yeni özellikleri eklemeyi unutma, eklemezsen ekranda görünmez
 def geçici_dizin_oluştur():
@@ -586,6 +590,16 @@ def yükle_temapaketi():
     except:
         os.system('clear')
         print('\nTema paketi başarıyla KURULAMADI')
+def yükle_trimage():
+    try:
+        os.system('clear')
+        print('\nTrimage uygulaması kuruluyor\n')
+        os.system('sudo apt-get install trimage --yes')
+        os.system('clear')
+        print('\nTrimage uygulaması başarıyla kuruldu\n')
+    except:
+        os.system('clear')
+        print('\nTrimage uygulaması başarıyla KURULAMADI')
 
 def sistem_güncelle(güncellendikten_sonra_sistemi_kapat):
     if güncellendikten_sonra_sistemi_kapat == 'evet':
