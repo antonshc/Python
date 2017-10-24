@@ -269,9 +269,9 @@ def internet_kontrol(
             site = urllib.request.urlopen('https://calap.co')
             r = req.get('https://ipinfo.io')
             ip1 = 'İnternet IP: ' + (r.json()['ip'])
-            ip2 = 'Yerel IP: ' + ni.ifaddresses('wlp3s0')[2][0]['addr']
+#            ip2 = 'Yerel IP: ' + ni.ifaddresses('wlp3s0')[2][0]['addr']
             print('\n'+durum_bağlı)
-            print(ip1+'\n'+ip2)
+            print(ip1) #print(ip1+'\n'+ip2)
             break
         except urllib.error.URLError:
             if sonsuz_döngü == "Hayır":
