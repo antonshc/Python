@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
 
 @Author: **Mustafa ÇALAP**
 @Version: 0.1.4
