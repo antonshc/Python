@@ -32,7 +32,7 @@ Turtle draws a spiral <br>
 Turtle creates polygon <br>
 
 ## UFS Project
-The language of this section is **Turkish**. This program automatically installs some programs that I want to use after a **Ubuntu** install. UFS stands for `Ubuntu Format Sonrası` and in English it means `After Ubuntu Install`.
+The language of this section is **Turkish**. This program automatically installs some programs that I want to use after a **Ubuntu** install. UFS stands for `Ubuntu Format Sonrası` and in English it means `After Ubuntu Installation`.
 
 ### Contributors
 - Wolf-0 created simpleBattleship
