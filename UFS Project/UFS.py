@@ -143,7 +143,7 @@ def kontrol_c(nerede):
     try:
         if nerede == "açılışta":
             os.system('clear')
-            b = input('Sanırım çıkacak gibisin doğru mu? (E/H)')
+            b = input('Sanırım çıkacak gibisin doğru mu? (E/H)-> ')
             if b == "E" or b == "e":
                 os.system('clear')
                 time.sleep(1.5)
@@ -158,7 +158,7 @@ def kontrol_c(nerede):
                 açılış_kontrol()
         elif nerede == "ortasında":
             os.system('clear')
-            b = input('Sanırım çıkacak gibisin doğru mu? (E/H)')
+            b = input('Sanırım çıkacak gibisin doğru mu? (E/H)-> ')
             if b == "E" or b == "e":
                 os.system('clear')
                 time.sleep(1.5)
@@ -233,27 +233,10 @@ def açılış_kontrol():
         internet_kontrol(durum_bağlı="Sistemin internete bağlı durumda",
                          durum_kopuk="Sistemin internet bağlantısı bulunamadı\nTekrar deneniyor",
                          sonsuz_döngü="Hayır")
-        print('\nProgram açılışına devam ediliyor')
-        time.sleep(3)
-        os.system('clear')
         print('''\
 
-            Tüm kontroller yapıldı program açılıyor
-        Açılıyor: 3
-        ''')
-        time.sleep(1)
-        os.system('clear')
-        print('''\
+            Tüm kontroller yapıldı program açılıyor.
 
-            Tüm kontroller yapıldı program açılıyor
-        Açılıyor: 2
-        ''')
-        time.sleep(1)
-        os.system('clear')
-        print('''\
-
-            Tüm kontroller yapıldı program açılıyor
-        Açılıyor: 1
         ''')
         time.sleep(1)
         os.system('clear')
@@ -275,6 +258,7 @@ def internet_kontrol(
 #            ip2 = 'Yerel IP: ' + ni.ifaddresses('wlp3s0')[2][0]['addr']
             print('\n'+durum_bağlı)
             print(ip1) #print(ip1+'\n'+ip2)
+            time.sleep(2)
             break
         except urllib.error.URLError:
             if sonsuz_döngü == "Hayır":
@@ -619,12 +603,13 @@ def sistem_güncelle(güncellendikten_sonra_sistemi_kapat):
         try:
             os.system('clear')
             print('\nSistem güncellemesi başlatılıyor\n')
-            print('Gereksiz şeyler temizleniyor\n')
-            os.system('sudo apt-get autoclean --yes')
-            os.system('sudo apt-get autoremove --yes')
             print('\nGüncelleme modülleri başlatılıyor\n')
             os.system('sudo apt-get update --yes')
             os.system('sudo apt-get upgrade --yes')
+            os.system('sudo apt-get dist-upgrade --yes')
+            print('Gereksiz şeyler temizleniyor\n')
+            os.system('sudo apt-get autoclean --yes')
+            os.system('sudo apt-get autoremove --yes')
             print('\nGüncelleme işlemleri başarıyla tamamlamlandı\n')
             print('GÜNCELLEME TAMAMLANDI SİSTEM KAPATILIYOR')
             os.system('sudo shutdown -h now')
@@ -635,12 +620,13 @@ def sistem_güncelle(güncellendikten_sonra_sistemi_kapat):
         try:
             os.system('clear')
             print('\nSistem güncellemesi başlatılıyor\n')
+            print('\nGüncelleme modülleri başlatılıyor\n')
+            os.system('sudo apt-get update --yes')
+            os.system('sudo apt-get upgrade --yes')
+            os.system('sudo apt-get dist-upgrade --yes')
             print('Gereksiz şeyler temizleniyor\n')
             os.system('sudo apt-get autoclean --yes')
             os.system('sudo apt-get autoremove --yes')
-            print('\nGüncelleme modülleri başlatılıyor\n')
-            os.system('sudo apt-get upgrade --yes')
-            os.system('sudo apt-get update --yes')
             print('\nGüncelleme işlemleri başarıyla tamamlamlandı\n')
         except:
             os.system('clear')
