@@ -99,6 +99,8 @@ def ana_döngü():
                 yükle_trimage()
             elif a == "24":
                 yükle_7zip()
+            elif a == "25":
+                yükle_psensor()
             elif a == "999":
                 sistem_güncelle(güncellendikten_sonra_sistemi_kapat='hayır')
                 yükle_filezilla()
@@ -125,6 +127,7 @@ def ana_döngü():
                 yükle_temapaketi()
                 yükle_trimage()
                 yükle_7zip()
+                yükle_psensor()
             elif a == "0":
                 os.system('clear')
             elif a == "h":
@@ -301,6 +304,7 @@ komutlar = """\
 {4}-----------------------------------------------------------------------------------{4}
 {4}[{0}21{4}] {1}Guvcview                    {4}|   [{0}22{4}]  {1}Tema Paketi
 {4}[{0}23{4}] {1}Trimage                     {4}|   [{0}24{4}]  {1}7zip FULL+RAR
+{4}[{0}25{4}] {1}PSensor
 
 """  # Buraya yeni özellikleri eklemeyi unutma, eklemezsen ekranda görünmez
 def geçici_dizin_oluştur():
@@ -597,6 +601,16 @@ def yükle_7zip():
     except:
         os.system('clear')
         print('\n7zip uygulaması başarıyla KURULAMADI')
+def yükle_psensor():
+    try:
+        os.system('clear')
+        print('\nPSensor uygulaması kuruluyor\n')
+        os.system('sudo apt-get install psensor --yes')
+        os.system('clear')
+        print('\nPSensor uygulaması başarıyla kuruldu\n')
+    except:
+        os.system('clear')
+        print('\nPSensor uygulaması başarıyla KURULAMADI')
 
 def sistem_güncelle(güncellendikten_sonra_sistemi_kapat):
     if güncellendikten_sonra_sistemi_kapat == 'evet':
