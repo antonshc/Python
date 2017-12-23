@@ -5,6 +5,7 @@ import time
 import os
 import requests as req
 import netifaces as ni
+from time import gmtime, strftime
 MAVI, KIRMIZI, BEYAZ, SARI, MACENTA, YEŞİL, SON = '\33[94m', '\033[91m', '\33[97m', '\33[93m', '\033[1;35m', '\033[1;32m', '\033[0m'  # RENKLER
 
 # ANA FONKSİYON
@@ -617,15 +618,21 @@ def sistem_güncelle(güncellendikten_sonra_sistemi_kapat):
         try:
             os.system('clear')
             print('\nSistem güncellemesi başlatılıyor\n')
-            print('\nGüncelleme modülleri başlatılıyor\n')
-            os.system('sudo apt-get update --yes')
-            os.system('sudo apt-get upgrade --yes')
-            os.system('sudo apt-get dist-upgrade --yes')
-            print('Gereksiz şeyler temizleniyor\n')
-            os.system('sudo apt-get autoclean --yes')
-            os.system('sudo apt-get autoremove --yes')
-            print('\nGüncelleme işlemleri başarıyla tamamlamlandı\n')
+            print('\nGüncelleme modülleri başlatılıyor\nLütfen bekleyin...')
+            print(saatkac())
+            logdamgala(niye="Güncelleme başlatılıyor")
+            os.system('sudo apt-get update --yes >> log')
+            os.system('sudo apt-get upgrade --yes >> log')
+            os.system('sudo apt-get dist-upgrade --yes >> log')
+            print('Gereksiz şeyler temizleniyor\n' + saatkac())
+            logdamgala(niye="Gereksiz şeyler temizleniyor")
+            os.system('sudo apt-get autoclean --yes >> log')
+            os.system('sudo apt-get autoremove --yes >> log')
+            print('\nGüncelleme işlemleri başarıyla tamamlamlandı\n' + saatkac())
+            logdamgala(niye="Güncelleme tamamlandı.")
+            print('Dizinde bulunan \'{0}log{1}\' dosyasından güncelleme geçmişini görebilirsiniz.'.format(KIRMIZI, SON))
             print('GÜNCELLEME TAMAMLANDI SİSTEM KAPATILIYOR')
+            logdamgala(niye="Sistem kapatılıyor...")
             os.system('sudo shutdown -h now')
         except:
             os.system('clear')
@@ -634,17 +641,23 @@ def sistem_güncelle(güncellendikten_sonra_sistemi_kapat):
         try:
             os.system('clear')
             print('\nSistem güncellemesi başlatılıyor\n')
-            print('\nGüncelleme modülleri başlatılıyor\n')
-            os.system('sudo apt-get update --yes')
-            os.system('sudo apt-get upgrade --yes')
-            os.system('sudo apt-get dist-upgrade --yes')
-            print('Gereksiz şeyler temizleniyor\n')
-            os.system('sudo apt-get autoclean --yes')
-            os.system('sudo apt-get autoremove --yes')
-            print('\nGüncelleme işlemleri başarıyla tamamlamlandı\n')
+            print('\nGüncelleme modülleri başlatılıyor\nLütfen bekleyin...')
+            print(saatkac())
+            logdamgala(niye="Güncelleme başlatılıyor")
+            os.system('sudo apt-get update --yes >> log')
+            os.system('sudo apt-get upgrade --yes >> log')
+            os.system('sudo apt-get dist-upgrade --yes >> log')
+            print('Gereksiz şeyler temizleniyor\n' + saatkac())
+            logdamgala(niye="Gereksiz şeyler temizleniyor")
+            os.system('sudo apt-get autoclean --yes >> log')
+            os.system('sudo apt-get autoremove --yes >> log')
+            print('\nGüncelleme işlemleri başarıyla tamamlamlandı\n' + saatkac())
+            logdamgala(niye="Güncelleme tamamlandı.")
+            print('Dizinde bulunan \'{0}log{1}\' dosyasından güncelleme geçmişini görebilirsiniz.'.format(KIRMIZI, SON))
         except:
             os.system('clear')
-            print('\nGüncelleme işlemleri başarıyla TAMAMLANAMADI')
+            print('\nGüncelleme işlemleri başarıyla TAMAMLANAMADI' + saatkac())
+            print('Hata kaydını {0}log{1} dosyasında bulabilirsiniz'.format(KIRMIZI, SON))
 def platform_kapat_aç():
     os.system('clear')
     print('\nUFS Platformu kapatılıyor')
@@ -652,5 +665,13 @@ def platform_kapat_aç():
     os.system('python3 UFS_yenile.py')
     exit()
 
+def saatkac():
+    zaman = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    return zaman
+def logdamgala(niye):
+    os.system('echo ' + "\"" + " " + "\"" + '>> log')
+    os.system('echo ' + "\"" + str(niye) + "\"" + '>> log')
+    os.system('echo ' + "\"" + saatkac() + "\"" + '>> log')
+    os.system('echo ' + "\"" + " " + "\"" + '>> log')
 
 ana_döngü()
