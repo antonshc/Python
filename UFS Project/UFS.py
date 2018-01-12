@@ -16,7 +16,8 @@ def ana_döngü():
             a = ""  # girilen komut
             b = ""  # kullanıcı kontrol (E/H)
             a = input('\n     {3}Komutları görmek için \'komutlar\' yazın\n{1}Komut: '.format(YEŞİL, SARI, KIRMIZI, BEYAZ, MAVI, SON))
-
+            multiple = a.split(" ") # girilen komutları boşluklardan itibaren böler
+            logdamgala("Girilen komut: " + a)
             def programdan_çık():
                 os.system('clear')
                 b = input('Çıkmak istediğinden emin misin? (E/H)\nCevap: ')
@@ -26,11 +27,10 @@ def ana_döngü():
                     ***
                         ***
                             ***
-                                KAPANIŞ SEKANSI BAŞLATILIYOR
+                                TEKRAR GÖRÜŞMEK ÜZERE DOSTUM
                             ***
                         ***
-                    ***
-                                TEKRAR GÖRÜŞMEK ÜZERE DOSTUM""")
+                    ***""")
                     exit()
                 elif b == "H" or b == "h":
                     os.system('clear')
@@ -38,107 +38,108 @@ def ana_döngü():
                 else:
                     print('Geçersiz işlem:', b, 'program çalışacak')
 
-            if a == "çık" or a == "q":
-                programdan_çık()
-            elif a == "komutlar":
-                os.system('clear')
-                print(komutlar.format(YEŞİL, SARI, KIRMIZI, BEYAZ, SON))
-            elif a == "1":
-                yükle_multiload()
-            elif a == "2":
-                yükle_sensors()
-            elif a == "3":
-                yükle_speedtest()
-            elif a == "4":
-                yükle_vnstat()
-            elif a == "5":
-                yükle_traceroute()
-            elif a == "6":
-                yükle_tor()
-            elif a == "7":
-                yükle_proxychains()
-            elif a == "8":
-                yükle_spotify()
-            elif a == "9":
-                yükle_torrent()
-            elif a == "10":
-                yükle_filezilla()
-            elif a == "11":
-                yükle_hexchat()
-            elif a == "12":
-                yükle_netdiscover()
-            elif a == "13":
-                yükle_vlc()
-            elif a == "14":
-                yükle_skype()
-            elif a == "15":
-                yükle_gitkraken()
-            elif a == "16":
-                yükle_megasync()
-            elif a == "17":
-                yükle_youtube_dl()
-            elif a == "18":
-                yükle_atom_editör()
-            elif a == "19":
-                yükle_opera42_stable()
-            elif a == "20":
-                yükle_steam()
-            elif a == "666":
-                os.system('clear')
-                b = input('Güncellendikten sonra sistem kapatılsın mı? (E/H)\nCevap: ')
-                if b == "E" or b == "e":
-                    sistem_güncelle(güncellendikten_sonra_sistemi_kapat='evet')
-                elif b == "H" or b == "h":
+            for i in multiple:
+                if i == "çık" or i == "q":
+                    programdan_çık()
+                elif i == "komutlar":
+                    os.system('clear')
+                    print(komutlar.format(YEŞİL, SARI, KIRMIZI, BEYAZ, SON))
+                elif i == "1":
+                    yükle_multiload()
+                elif i == "2":
+                    yükle_sensors()
+                elif i == "3":
+                    yükle_speedtest()
+                elif i == "4":
+                    yükle_vnstat()
+                elif i == "5":
+                    yükle_traceroute()
+                elif i == "6":
+                    yükle_tor()
+                elif i == "7":
+                    yükle_proxychains()
+                elif i == "8":
+                    yükle_spotify()
+                elif i == "9":
+                    yükle_torrent()
+                elif i == "10":
+                    yükle_filezilla()
+                elif i == "11":
+                    yükle_hexchat()
+                elif i == "12":
+                    yükle_netdiscover()
+                elif i == "13":
+                    yükle_vlc()
+                elif i == "14":
+                    yükle_skype()
+                elif i == "15":
+                    yükle_gitkraken()
+                elif i == "16":
+                    yükle_megasync()
+                elif i == "17":
+                    yükle_youtube_dl()
+                elif i == "18":
+                    yükle_atom_editör()
+                elif i == "19":
+                    yükle_opera42_stable()
+                elif i == "20":
+                    yükle_steam()
+                elif i == "666":
+                    os.system('clear')
+                    b = input('Güncellendikten sonra sistem kapatılsın mı? (E/H)\nCevap: ')
+                    if b == "E" or b == "e":
+                        sistem_güncelle(güncellendikten_sonra_sistemi_kapat='evet')
+                    elif b == "H" or b == "h":
+                        sistem_güncelle(güncellendikten_sonra_sistemi_kapat='hayır')
+                    else:
+                        print('Geçersiz işlem:', b, 'program çalışacak')
+                elif i == "21":
+                    yükle_guvcview()
+                elif i == "22":
+                    yükle_temapaketi()
+                elif i == "23":
+                    yükle_trimage()
+                elif i == "24":
+                    yükle_7zip()
+                elif i == "25":
+                    yükle_psensor()
+                elif i == "999":
                     sistem_güncelle(güncellendikten_sonra_sistemi_kapat='hayır')
+                    yükle_filezilla()
+                    yükle_hexchat()
+                    yükle_multiload()
+                    yükle_netdiscover()
+                    yükle_proxychains()
+                    yükle_sensors()
+                    yükle_speedtest()
+                    yükle_spotify()
+                    yükle_tor()
+                    yükle_torrent()
+                    yükle_traceroute()
+                    yükle_vnstat()
+                    yükle_vlc()
+                    yükle_skype()
+                    yükle_gitkraken()
+                    yükle_opera42_stable()
+                    yükle_steam()
+                    yükle_atom_editör()
+                    yükle_youtube_dl()
+                    yükle_megasync()
+                    yükle_guvcview()
+                    yükle_temapaketi()
+                    yükle_trimage()
+                    yükle_7zip()
+                    yükle_psensor()
+                elif i == "0":
+                    os.system('clear')
+                elif i == "h":
+                    hakkında()
+                elif i == "000":
+                    platform_kapat_aç()
                 else:
-                    print('Geçersiz işlem:', b, 'program çalışacak')
-            elif a == "21":
-                yükle_guvcview()
-            elif a == "22":
-                yükle_temapaketi()
-            elif a == "23":
-                yükle_trimage()
-            elif a == "24":
-                yükle_7zip()
-            elif a == "25":
-                yükle_psensor()
-            elif a == "999":
-                sistem_güncelle(güncellendikten_sonra_sistemi_kapat='hayır')
-                yükle_filezilla()
-                yükle_hexchat()
-                yükle_multiload()
-                yükle_netdiscover()
-                yükle_proxychains()
-                yükle_sensors()
-                yükle_speedtest()
-                yükle_spotify()
-                yükle_tor()
-                yükle_torrent()
-                yükle_traceroute()
-                yükle_vnstat()
-                yükle_vlc()
-                yükle_skype()
-                yükle_gitkraken()
-                yükle_opera42_stable()
-                yükle_steam()
-                yükle_atom_editör()
-                yükle_youtube_dl()
-                yükle_megasync()
-                yükle_guvcview()
-                yükle_temapaketi()
-                yükle_trimage()
-                yükle_7zip()
-                yükle_psensor()
-            elif a == "0":
-                os.system('clear')
-            elif a == "h":
-                hakkında()
-            elif a == "000":
-                platform_kapat_aç()
-            else:
-                os.system('clear')
-                print('\n{0}Dostum çok yanlış şeyler girdin anlamadım'.format(KIRMIZI))
-                print('{0}Böyle acayip komutlarım yok ->'.format(BEYAZ), a)
+                    os.system('clear')
+                    print('\n{0}Dostum çok yanlış şeyler girdin anlamadım'.format(KIRMIZI))
+                    print('{0}Böyle acayip komutlarım yok ->'.format(BEYAZ), a)
     except KeyboardInterrupt:
         kontrol_c(nerede="ortasında")
 
@@ -178,10 +179,12 @@ def kontrol_c(nerede):
     except KeyboardInterrupt:
         os.system('clear')
         print('E sende yeter ama artık çıkacaksan çık tamam')
+        logdamgala("KeyboardInterrupt ile program sonlandırıldı.")
         exit()
     except:
         os.system('clear')
         print('Bişeyler çok ters gitti ama anlamadım\nPlatformu baştan açıyorum')
+        logdamgala("BİLİNMEYEN HATA")
         time.sleep(2)
         açılış_kontrol()
 
@@ -287,6 +290,9 @@ def internet_kontrol(
 açılış_kontrol()  # Programı başlatan komut
 
 komutlar = """\
+
+{4}*Aralarında birer boşluk olacak şekilde birden fazla komut girebilirsiniz.
+*Ör: {2}666 {0}1 2 3 {2}q
 
 {4}[{0}1{4}]  {1}Multiload indicator         {4}|   [{2}999{4}] Hepsini yükle
 {4}[{0}2{4}]  {1}Sıcaklık ölçer              {4}|   [{2}666{4}] {0}Sistemi güncelle
